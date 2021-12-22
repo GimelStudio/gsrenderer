@@ -17,6 +17,11 @@
 # ----------------------------------------------------------------------------
 
 
+# gsrenderer handles the backend
+import gsrenderer
+# gimelstudio.api handles the frontend
+from gimelstudio import api
+
 
 try:
     import OpenImageIO as oiio
@@ -24,12 +29,10 @@ except ImportError:
     print("""OpenImageIO is required! Get the python wheel for Windows at:
      https://www.lfd.uci.edu/~gohlke/pythonlibs/#openimageio""")
 
-import gsrenderer
-
 
 class FlipNode(gsrenderer.Node):
     def __init__(self, nodegraph, _id):
-        api.Node.__init__(self, nodegraph, _id)
+        gsrenderer.Node.__init__(self, nodegraph, _id)
 
     @property
     def NodeMeta(self):
@@ -52,7 +55,7 @@ class FlipNode(gsrenderer.Node):
         self.NodeAddProp(self.direction)
 
     def NodeInitParams(self):
-        image = api.RenderImageParam("image", "Image")
+        image = gsrenderer.ImageParam("image", "Image")
 
         self.NodeAddParam(image)
 
@@ -75,4 +78,4 @@ class FlipNode(gsrenderer.Node):
         self.NodeUpdateThumb(output_image)
 
 
-api.RegisterNode(FlipNode, "corenode_flip")
+gsrenderer.RegisterNode(FlipNode, "corenode_flip")
