@@ -24,12 +24,10 @@ except ImportError:
     print("""OpenImageIO is required! Get the python wheel for Windows at:
      https://www.lfd.uci.edu/~gohlke/pythonlibs/#openimageio""")
 
-from gimelstudio import api
-
 import gsrenderer
 
 
-class FlipNode(api.Node):
+class FlipNode(gsrenderer.Node):
     def __init__(self, nodegraph, _id):
         api.Node.__init__(self, nodegraph, _id)
 
@@ -64,7 +62,7 @@ class FlipNode(api.Node):
     def NodeEvaluation(self, eval_info):
         flip_direction = self.EvalProperty(eval_info, "direction")
         
-        input_image = gsrenderer.GetImage()
+        input_image = self.EvalParameter(eval_info, "image")
 
         if flip_direction == "Vertically":
             output_image = oiio.ImageBufAlgo.flip(input_image)
@@ -74,10 +72,7 @@ class FlipNode(api.Node):
             output_image = oiio.ImageBufAlgo.transpose(input_image)
 
         gsrenderer.SetImage(output_image)
-        
-        render_image = api.RenderImage()
-        render_image.SetAsImage(output_image)
-        self.NodeUpdateThumb(render_image)
+        self.NodeUpdateThumb(output_image)
 
 
 api.RegisterNode(FlipNode, "corenode_flip")
