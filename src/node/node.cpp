@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 //#include "../core/evaluation.h" 
+#include "Property.h"
 #include "node.h"
 
 void Node::SetAsOutput(bool output) { 

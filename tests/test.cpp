@@ -3,9 +3,9 @@
 // #include "../src/core/evaluation.h"
 
 #include "../src/node/node.h"
-#include "../src/core/renderer.h"
+//#include "../src/core/renderer.h"
 // #include "../src/node/parameter.h"
-// #include "../src/node/property.h"
+//#include "../src/node/property.h"
 
 
 int main() {

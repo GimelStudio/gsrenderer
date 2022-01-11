@@ -12,12 +12,14 @@
 class Node 
 { 
     public:  
-        int id {0};
-        bool is_output {false};
-        std::string idname {""};
-        //std::vector<Parameter> parameters;
+        int id = 0;
+        bool is_output = false;
+        std::string idname = "";
+        std::vector<Property> properties;
+        std::vector<Parameter> parameters;
 
-        Node(std::string name, int id) {
+        Node(std::string name, int id) 
+        {
             idname = name;
             id = id;
         }

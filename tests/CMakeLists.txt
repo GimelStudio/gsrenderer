@@ -8,6 +8,4 @@ add_executable(Test
     ../src/core/output_node.cpp
     ../src/core/renderer.cpp
     ../src/node/node.cpp
-    ../src/node/parameter.cpp
-    ../src/node/property.cpp
 )
