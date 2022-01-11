@@ -5,16 +5,19 @@
 #include <string>
 
 
-class Parameter {
-    public:
-        int id {0};
-        int binding;
-        std::string idname;
+struct Parameter;
 
-    Parameter(std::string name, int id) {
-        idname = name;
-        id = id;
-    }
-};
+// class Parameter {
+//     public:
+//         int id {0};
+//         int binding;
+//         int value {0}; // Maybe uneeded
+//         std::string idname;
+
+//     Parameter(std::string name, int id) {
+//         idname = name;
+//         id = id;
+//     }
+// };
 
 #endif // PARAMETER_H

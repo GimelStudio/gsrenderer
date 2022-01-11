@@ -3,17 +3,27 @@
 
 #include <iostream>
 #include <string>
+#include "../node/node.h"
 
 
-class EvalInfo {
-  public:
-    void EvaluateParameter(std::string name) {
+class Evaluation // AKA: EvalInfo
+{ 
+    public:
+        Node* inode; 
 
-    }
+        Evaluation(Node *eval_node) 
+        {
+            inode = eval_node;
+        }
 
-    void EvaluateProperty(std::string name) {
+        ~Evaluation() 
+        {
+            delete inode;
+        }
 
-    }
+        int EvaluateParameter(std::string name);
+
+        int EvaluateProperty(std::string name);
 };
 
 #endif // EVALUATION_H

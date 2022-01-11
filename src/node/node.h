@@ -3,22 +3,28 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Parameter.h"
+#include "Property.h"
+//#include "../core/evaluation.h"
 
 
-class Node { 
-  public:  
-    int id {0};
-    bool isOutput {false};
-    std::string idname;
+class Node 
+{ 
+    public:  
+        int id {0};
+        bool is_output {false};
+        std::string idname {""};
+        //std::vector<Parameter> parameters;
 
-    Node(std::string name, int id) {
-      idname = name;
-      id = id;
-    }
+        Node(std::string name, int id) {
+            idname = name;
+            id = id;
+        }
 
-    void setAsOutput(bool output) { 
-      isOutput = output;
-    }
+        void SetAsOutput(bool output);
+
+        //int EvaluateNode(Evaluation *eval);
 };
 
 #endif // NODE_H
